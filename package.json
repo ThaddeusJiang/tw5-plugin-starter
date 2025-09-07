@@ -1,11 +1,20 @@
 {
-  "name": "twpluginskeleton",
+  "name": "tw5-plugin-starter",
+  "description": "TiddlyWiki Plugin Starter",
   "version": "0.0.4",
-  "author": "You",
-  "description": "TiddlyWiki Plugin Skeleton",
-  "homepage": "...",
-  "license": "...",
-  "bugs": "...",
+  "main": "main.js",
+  "scripts": {
+    "dev": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html",
+    "build": "tiddlywiki editions/release --verbose --build release",
+    "start": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html & echo $! > tw.pid",
+    "stop": "kill `cat tw.pid` && rm tw.pid",
+    "winstart": "start \"TW5 Plugin Develop\" cmd /c tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html",
+    "winstop": "taskkill /fi \"WINDOWTITLE eq TW5 Plugin Develop\""
+  },
+  "license": "MIT",
+  "author": "Thaddeus Jiang",
+  "homepage": "https://github.com/ThaddeusJiang/tw5-plugin-starter",
+  "bugs": "https://github.com/ThaddeusJiang/tw5-plugin-starter/issues",
   "keywords": [
     "tiddlywiki",
     "tiddlywiki5",
@@ -13,15 +22,6 @@
     "plugin",
     "ThirdFlow"
   ],
-  "main": "main.js",
-  "scripts": {
-    "start": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html & echo $! > tw.pid",
-    "stop": "kill `cat tw.pid` && rm tw.pid",
-    "winstart": "start \"TW5 Plugin Develop\" cmd /c tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html",
-    "winstop": "taskkill /fi \"WINDOWTITLE eq TW5 Plugin Develop\"",
-    "develop": "tiddlywiki editions/develop --verbose --server 8080 $:/core/save/all text/plain text/html",
-    "release": "tiddlywiki editions/release --verbose --build release"
-  },
   "dependencies": {
     "tiddlywiki": ">=5.1.20",
     "tw5-thirdflow": ">=1.2.10"
@@ -29,6 +29,7 @@
   "devDependencies": {},
   "bundleDependencies": [],
   "engines": {
-    "node": ">=0.8.2"
-  }
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.15.1"
 }
